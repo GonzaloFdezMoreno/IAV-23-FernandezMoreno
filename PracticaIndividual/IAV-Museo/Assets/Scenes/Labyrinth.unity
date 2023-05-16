@@ -2242,12 +2242,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Enrique Juan Gamboa
-
-    Gonzalo Fernandez Moreno
-
-    Javier Villegas
-    Montelongo'
+  m_Text: Gonzalo Fernandez Moreno
 --- !u!222 &1943294996
 CanvasRenderer:
   m_ObjectHideFlags: 0

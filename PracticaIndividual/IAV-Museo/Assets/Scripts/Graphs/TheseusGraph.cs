@@ -111,7 +111,14 @@ namespace UCM.IAV.Navegacion
             {
                 //Source jugador y destino el nodo final
                 if (srcObj == null) srcObj = GameManager.instance.GetPlayer();
-                if (dstObj == null) dstObj = GameManager.instance.GetExitNode();
+                if (!GameManager.instance.GetPicked())
+                {
+                    if (dstObj == null) dstObj = GameManager.instance.GetExitNode();
+                }
+                else
+                {
+                    if (dstObj == null) dstObj = GameManager.instance.GetStartNode();
+                }
 
                 //path = new List<Vertex>();
 
@@ -147,6 +154,10 @@ namespace UCM.IAV.Navegacion
 
                     DibujaHilo();
                 }
+            }
+            else
+            {
+                if (dstObj != null) dstObj = null;
             }
         }
 

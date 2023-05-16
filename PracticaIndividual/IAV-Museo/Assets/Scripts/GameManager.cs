@@ -169,6 +169,16 @@ namespace UCM.IAV.Movimiento
             return exit;
         }
 
+        public GameObject GetStartNode()
+        {
+            return startp;
+        }
+
+        public bool GetPicked()
+        {
+            return picked;
+        }
+
         public void SetExit(int i, int j, float size)
         {
             exit = new GameObject(); exit.name = "Exit";

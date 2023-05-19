@@ -1282,7 +1282,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: El Hilo de Ariadna
+  m_Text: Robo en el Museo
 --- !u!222 &738642966
 CanvasRenderer:
   m_ObjectHideFlags: 0

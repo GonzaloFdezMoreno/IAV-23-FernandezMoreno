@@ -46,6 +46,9 @@ namespace UCM.IAV.Movimiento
         GameObject exit = null;
         GameObject startp = null;
 
+
+        GameObject[] checkpoints = new GameObject[2]; 
+
         int numMinos = 1;
 
         bool picked = false;
@@ -151,7 +154,8 @@ namespace UCM.IAV.Movimiento
 
         public void setNumMinos()
         {
-            numMinos = int.Parse(label2.text);
+            //numMinos = int.Parse(label2.text);
+            numMinos = 1; 
         }
 
         public int getNumMinos()
@@ -193,6 +197,13 @@ namespace UCM.IAV.Movimiento
             player.transform.position = new Vector3(i * size, 0.2f, j * size);
             startSlab.transform.position = new Vector3(i * size, 0.2f, j * size);
 
+        }
+
+        public void SetCheckPoint(int i, int j, float size,int order)
+        {
+            checkpoints[order] = new GameObject(); checkpoints[0].name = "Checkpoint"+order;
+            checkpoints[order].transform.position = new Vector3(i * size, 0, j * size);
+            
         }
 
         private void ChangeFrameRate()

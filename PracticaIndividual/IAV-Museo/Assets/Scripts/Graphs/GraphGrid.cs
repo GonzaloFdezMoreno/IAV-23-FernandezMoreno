@@ -104,6 +104,10 @@ namespace UCM.IAV.Navegacion
                                 GameManager.instance.SetExit(j, i, cellSize);
                             else if (line[j] == 's')
                                 GameManager.instance.SetStart(j, i, cellSize);
+                            else if (line[j] == '1')
+                                GameManager.instance.SetCheckPoint(j, i, cellSize,0);
+                            else if (line[j] == '2')
+                                GameManager.instance.SetCheckPoint(j, i, cellSize,1);
                             else if (line[j] == 'T')
                                 isGround = false;
                             mapVertices[i, j] = isGround;

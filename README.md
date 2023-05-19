@@ -32,7 +32,7 @@ La manera en la que vamos a afrontar esta práctica es la siguiente:
 
 ## Pruebas y métricas
 
-- [Vídeo con la batería de pruebas](https://youtu.be/yVW6E7x2kIs)
+
 
 ## Ampliaciones
 

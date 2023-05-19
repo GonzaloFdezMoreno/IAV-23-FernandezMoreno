@@ -227,7 +227,7 @@ namespace UCM.IAV.Navegacion
                     result.Add(curr.vertex);
                     curr.vertex.isInPath = true;
 
-                    Debug.Log(curr.vertex.id);
+                    //Debug.Log(curr.vertex.id);
 
                     curr = curr.previous;
                 }

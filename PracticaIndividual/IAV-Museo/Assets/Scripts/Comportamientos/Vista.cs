@@ -6,7 +6,8 @@ using UnityEngine;
 public class Vista : MonoBehaviour
 {
 
-    private Merodear mero;
+    //private Merodear mero;
+    private Patrulla reco;
     private Llegada lleg;
     [SerializeField]
     Transform playerTransform;
@@ -17,7 +18,8 @@ public class Vista : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        mero = GetComponent<Merodear>();
+        //mero = GetComponent<Merodear>();
+        reco = GetComponent<Patrulla>();
         lleg = GetComponent<Llegada>();
         playerTransform = GameManager.instance.GetPlayer().transform;
         
@@ -31,12 +33,12 @@ public class Vista : MonoBehaviour
 
             angvista = Vector3.Angle(transform.forward, playerTransform.position - transform.position); //calculamos el angulo entre la direccion que lleva el minotauro y el raycast creado
 
-            Debug.Log("Ray hit: " + sight.collider.gameObject.tag);
+            //Debug.Log("Ray hit: " + sight.collider.gameObject.tag);
             if (sight.collider.gameObject.tag == "Player"&&angvista>-30&&angvista<30) //comprobamos que no haya nada entre player y el minotauro y ademas que esté en un angulo bajo de forma que pueda ver al jugador
             {
                 if (!lleg.enabled) { 
                     //si lo ve que lo persiga
-                    mero.enabled = false;
+                    reco.enabled = false;
                     lleg.enabled = true;
                     lleg.objetivo = sight.collider.gameObject;
 
@@ -46,7 +48,7 @@ public class Vista : MonoBehaviour
             {
                 if (lleg.enabled) { //para que solo lo haga 1 vez
                     //si no lo ve que siga merodeando
-                    mero.enabled = true;
+                    reco.enabled = true;
                     lleg.enabled = false;
                 }
             }

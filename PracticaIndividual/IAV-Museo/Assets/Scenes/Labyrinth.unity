@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 478290964}
   - component: {fileID: 478290965}
   - component: {fileID: 478290963}
+  - component: {fileID: 478290966}
   m_Layer: 0
   m_Name: TesterGraph
   m_TagString: TesterGraph
@@ -470,6 +471,25 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &478290966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478290962}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f092e90264856f42a21b7005cb1f86c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graph: {fileID: 1574568752}
+  algorithm: 2
+  smoothPath: 0
+  vertexTag: Vertex
+  obstacleTag: Wall
+  pathColor: {r: 1, g: 0.038367633, b: 0, a: 0}
+  pathNodeRadius: 0.3
 --- !u!1 &479330053
 GameObject:
   m_ObjectHideFlags: 0

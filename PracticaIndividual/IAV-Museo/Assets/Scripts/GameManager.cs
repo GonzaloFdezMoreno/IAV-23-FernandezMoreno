@@ -47,11 +47,15 @@ namespace UCM.IAV.Movimiento
         GameObject startp = null;
 
 
-        GameObject[] checkpoints = new GameObject[2]; 
+        public GameObject[] checkpoints = new GameObject[2];
+        GameObject guardia;
+        
 
         int numMinos = 1;
 
         bool picked = false;
+        public bool reach0 = true;
+        public bool reach1 = false;
 
         private void Awake()
         {
@@ -82,6 +86,11 @@ namespace UCM.IAV.Movimiento
         // Update is called once per frame
         void Update()
         {
+            if (guardia == null)
+            {
+                guardia = GameObject.Find("Guardia");
+            }
+
             // Timer para mostrar el frameRate a intervalos
             if (m_timeCounter < m_refreshTime)
             {
@@ -113,6 +122,18 @@ namespace UCM.IAV.Movimiento
                 goToScene("Menu");
             }
 
+            if (guardia != null && (guardia.transform.position - checkpoints[0].transform.position).magnitude < 0.5f)
+            {
+                reach0 = true;
+                reach1 = false;
+            }
+
+            if (guardia != null && (guardia.transform.position - checkpoints[1].transform.position).magnitude < 0.5f)
+            {
+                reach1 = true;
+                reach0 = false;
+            }
+
             //Input
             if (Input.GetKeyDown(KeyCode.R))
                 RestartScene();
@@ -137,6 +158,8 @@ namespace UCM.IAV.Movimiento
                 exitSlab = GameObject.FindGameObjectWithTag("Exit");
                 startSlab = GameObject.FindGameObjectWithTag("Start");
                 player = GameObject.Find("Avatar");
+                
+                
             }
         }
 
@@ -201,10 +224,33 @@ namespace UCM.IAV.Movimiento
 
         public void SetCheckPoint(int i, int j, float size,int order)
         {
-            checkpoints[order] = new GameObject(); checkpoints[0].name = "Checkpoint"+order;
+            checkpoints[order] = new GameObject(); checkpoints[order].name = "Checkpoint"+order;
             checkpoints[order].transform.position = new Vector3(i * size, 0, j * size);
+
+
             
         }
+
+        public GameObject GetCheckpointNode(int order)
+        {
+            
+            return checkpoints[order];
+        }
+
+        public bool hasReachedfirstCheckpoint()
+        {
+            return reach0;
+        }
+        public bool hasReachedsecondCheckpoint()
+        {
+            return reach1;
+        }
+
+        public GameObject GetGuardia()
+        {
+            return guardia;
+        }
+
 
         private void ChangeFrameRate()
         {

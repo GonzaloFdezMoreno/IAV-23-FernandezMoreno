@@ -475,6 +475,7 @@ GameObject:
   - component: {fileID: -4492202580871306894}
   - component: {fileID: 7927598334497457767}
   - component: {fileID: 1036780221998902435}
+  - component: {fileID: -8851527464846943851}
   m_Layer: 7
   m_Name: Minotaur
   m_TagString: Untagged
@@ -589,7 +590,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5856985828648263931}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32ae6ecb59bfdb145aa73cf70a7145c7, type: 3}
   m_Name: 
@@ -609,7 +610,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5856985828648263931}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ffa41cffd326f64b856316d349eca5c, type: 3}
   m_Name: 
@@ -668,6 +669,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10d430a5cb0d05f4a8c2271c5fe5acf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-8851527464846943851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5856985828648263931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ced513ae5c269e4aa20364c475dc698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  peso: 1
+  prioridad: 1
+  objetivo: {fileID: 0}
+  graph: {fileID: 0}
 --- !u!1 &6227627562668922387
 GameObject:
   m_ObjectHideFlags: 0

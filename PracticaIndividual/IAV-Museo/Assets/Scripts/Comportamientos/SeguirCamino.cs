@@ -27,7 +27,7 @@ namespace UCM.IAV.Movimiento
                 graph.PopLastNode();
             }
             sigNodo = graph.GetNextNode();
-            Debug.Log(sigNodo);
+            //Debug.Log(sigNodo);
             base.Update();
         }
 

@@ -54,6 +54,8 @@ namespace UCM.IAV.Movimiento
         int numMinos = 1;
 
         bool picked = false;
+        bool dropped = true;
+        float timedropped = 0.0f;
         public bool reach0 = true;
         public bool reach1 = false;
         public bool reach2 = false;
@@ -110,13 +112,23 @@ namespace UCM.IAV.Movimiento
             if (fRText != null)
                 fRText.text = (((int)(m_lastFramerate * 100 + .5) / 100.0)).ToString();
 
-            if (player != null && (player.transform.position - exit.transform.position).magnitude < 0.5f)
+            if (player != null && (player.transform.position - exit.transform.position).magnitude < 0.5f && dropped && Input.GetKeyDown(KeyCode.E))
+            {
                 picked = true;
-            //goToScene("Menu");
+                dropped = false;
+                //goToScene("Menu");
+            }
+            else if (picked && Input.GetKeyDown(KeyCode.E))
+            {
+                picked = false;
+                dropped = true;
+            }
+
 
             if (picked)
             {
                 exitSlab.transform.position = player.transform.position;
+                exit.transform.position = player.transform.position;
             }
 
             if (player != null && (player.transform.position - startp.transform.position).magnitude < 0.5f && picked) { 
@@ -155,6 +167,8 @@ namespace UCM.IAV.Movimiento
                 reach2 = false;
                 reach3 = true;
             }
+
+            
 
             //Input
             if (Input.GetKeyDown(KeyCode.R))
@@ -226,6 +240,11 @@ namespace UCM.IAV.Movimiento
         public bool GetPicked()
         {
             return picked;
+        }
+
+        public bool isDropped()
+        {
+            return dropped;
         }
 
         public void SetExit(int i, int j, float size)

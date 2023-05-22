@@ -113,22 +113,30 @@ namespace UCM.IAV.Navegacion
 
 
             if (srcObj == null) srcObj = GameManager.instance.GetGuardia();
-            if (!GameManager.instance.hasReachedfirstCheckpoint())
-            {
-                 dstObj = GameManager.instance.GetCheckpointNode(0);
-            }
-            else if (!GameManager.instance.hasReachedsecondCheckpoint())
+            if (GameManager.instance.hasReachedfirstCheckpoint())
             {
                  dstObj = GameManager.instance.GetCheckpointNode(1);
             }
+            else if (GameManager.instance.hasReachedsecondCheckpoint())
+            {
+                 dstObj = GameManager.instance.GetCheckpointNode(2);
+            }
+            else if (GameManager.instance.hasReachedthirdCheckpoint())
+            {
+                dstObj = GameManager.instance.GetCheckpointNode(3);
+            }
+            else if (GameManager.instance.hasReachedforthCheckpoint())
+            {
+                dstObj = GameManager.instance.GetCheckpointNode(0);
+            }
 
-           
-                //Source jugador y destino el nodo final
-                
 
-                //path = new List<Vertex>();
+            //Source jugador y destino el nodo final
 
-                switch (algorithm)
+
+            //path = new List<Vertex>();
+
+            switch (algorithm)
                 {
                     case TesterGraphAlgorithm.ASTAR:
                         //Chequeo extra para no recalcular camino cuando no sea necesario

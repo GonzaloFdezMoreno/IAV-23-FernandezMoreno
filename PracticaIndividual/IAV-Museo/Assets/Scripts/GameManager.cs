@@ -47,7 +47,7 @@ namespace UCM.IAV.Movimiento
         GameObject startp = null;
 
 
-        public GameObject[] checkpoints = new GameObject[2];
+        public GameObject[] checkpoints = new GameObject[4];
         GameObject guardia;
         
 
@@ -56,6 +56,8 @@ namespace UCM.IAV.Movimiento
         bool picked = false;
         public bool reach0 = true;
         public bool reach1 = false;
+        public bool reach2 = false;
+        public bool reach3 = false;
 
         private void Awake()
         {
@@ -126,12 +128,32 @@ namespace UCM.IAV.Movimiento
             {
                 reach0 = true;
                 reach1 = false;
+                reach2 = false;
+                reach3 = false;
             }
 
             if (guardia != null && (guardia.transform.position - checkpoints[1].transform.position).magnitude < 0.5f)
             {
-                reach1 = true;
                 reach0 = false;
+                reach1 = true;
+                reach2 = false;
+                reach3 = false;
+            }
+
+            if (guardia != null && (guardia.transform.position - checkpoints[2].transform.position).magnitude < 0.5f)
+            {
+                reach0 = false;
+                reach1 = false;
+                reach2 = true;
+                reach3 = false;
+            }
+
+            if (guardia != null && (guardia.transform.position - checkpoints[3].transform.position).magnitude < 0.5f)
+            {
+                reach0 = false;
+                reach1 = false;
+                reach2 = false;
+                reach3 = true;
             }
 
             //Input
@@ -244,6 +266,16 @@ namespace UCM.IAV.Movimiento
         public bool hasReachedsecondCheckpoint()
         {
             return reach1;
+        }
+
+        public bool hasReachedthirdCheckpoint()
+        {
+            return reach2;
+        }
+
+        public bool hasReachedforthCheckpoint()
+        {
+            return reach3;
         }
 
         public GameObject GetGuardia()

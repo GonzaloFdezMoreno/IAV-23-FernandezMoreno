@@ -599,8 +599,8 @@ MonoBehaviour:
   prioridad: 1
   objetivo: {fileID: 0}
   radioObjetivo: 0
-  radioRalentizado: 1
-  fuerzaRalentizado: 1
+  radioRalentizado: 0
+  fuerzaRalentizado: 0
   avoidQuantity: 5
   distance: 1
 --- !u!114 &6507237307752362611
@@ -884,7 +884,7 @@ Transform:
   m_GameObject: {fileID: 7872998543525572461}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6486275522226813505}

@@ -241,9 +241,11 @@ namespace UCM.IAV.Navegacion
 
         public void ResetVertexPath(List<Vertex> path)
         {
-            foreach (var ver in path)
-            {
-                ver.isInPath = false;
+            if (path != null) {
+                foreach (var ver in path)
+                {
+                    ver.isInPath = false;
+                }
             }
         }
 

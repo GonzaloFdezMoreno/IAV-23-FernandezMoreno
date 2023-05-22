@@ -12,6 +12,7 @@ public class Vista : MonoBehaviour
     [SerializeField]
     Transform playerTransform;
     RaycastHit sight = new RaycastHit();
+    float seetime = 0;
 
     float angvista; //para ver si te ve el minotauro
 
@@ -36,23 +37,37 @@ public class Vista : MonoBehaviour
             //Debug.Log("Ray hit: " + sight.collider.gameObject.tag);
             if (sight.collider.gameObject.tag == "Player"&&angvista>-30&&angvista<30) //comprobamos que no haya nada entre player y el minotauro y ademas que esté en un angulo bajo de forma que pueda ver al jugador
             {
+
                 if (!lleg.enabled) { 
                     //si lo ve que lo persiga
                     reco.enabled = false;
-                    lleg.enabled = true;
-                    lleg.objetivo = sight.collider.gameObject;
+                   
+                    if (GameManager.instance.GetPicked()||seetime>3) {
+                       
+                        lleg.enabled = true;
+                        lleg.objetivo = sight.collider.gameObject;
+                    }
+                    else
+                    {
+                        this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
+                        seetime += Time.deltaTime;
+                    }
+
 
                 }
             }
             else
             {
-                if (lleg.enabled) { //para que solo lo haga 1 vez
+                if (!reco.enabled) { //para que solo lo haga 1 vez
                     //si no lo ve que siga merodeando
                     reco.enabled = true;
                     lleg.enabled = false;
+                    seetime = 0;
                 }
             }
         }
+
+        //Si ve que el objeto no está en su sitio lo recoge
 
     }
 }

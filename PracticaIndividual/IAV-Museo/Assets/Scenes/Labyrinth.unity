@@ -1460,9 +1460,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 987a0924362949343b0f47fbabab7f31, type: 3}
-    m_FontSize: 27
-    m_FontStyle: 0
+    m_Font: {fileID: 12800000, guid: 1062c701058745940ae5dca6219c64c8, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
@@ -1472,7 +1472,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Suavizar-K
+  m_Text: Recoger/Dejar-E
 --- !u!222 &1271005568
 CanvasRenderer:
   m_ObjectHideFlags: 0

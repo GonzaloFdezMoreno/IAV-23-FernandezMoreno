@@ -1,0 +1,10 @@
+Cosas de errores a tener en cuenta:
+-El video está hecho visualizando Unity, dado que pese a que funciona correctamente, en la build da error y no carga el mapa
+-Si bien el player tiene el seguimiento automatico esté no se activará a menos que el guardia deje de patrullar
+-De vez en cuando ocurre que si te pilla el minotauro y reinicia no te deja pillar el objeto
+
+Otros:
+-Esta práctica utiliza como base la prática 2 de IAV; sin embargo contiene modificaciones y adiciones tanto al comportamiento de los enemigos
+ , como el objetivo del juego
+
+Alumno: Gonzalo Fdez Moreno

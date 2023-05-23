@@ -24,15 +24,15 @@ Algunos de estos recursos se modificarán para hacer los nuevos comportamientos,
 
 La manera en la que vamos a afrontar esta práctica es la siguiente:
 
- - Utilizaremos **el script de Graph** para que sea capaz de ir y volver por camino utilizando el algoritmo de A*.
+ - Se utilizará **el script de Graph** para que sea capaz de ir y volver por camino utilizando el algoritmo de A*.
 
  - Además de ello, se modificará **el script de persecucuión** para el guardia, para que sea capaz de perseguir al jugador si se cumplen ciertas condiciones.
  
- - Crearemos un script para el nuevo comportamiento de los guardias y posiblemente será representado con una maquina de estados 
+ - Se crearán y/o modificarán varios scripts para el nuevo comportamiento de los guardias.
 
 ## Pruebas y métricas
 
-
+Se descarga: [Vídeo de prueba](https://github.com/GonzaloFdezMoreno/IAV-23-FernandezMoreno/raw/main/Video%20Muestra.mp4)
 
 ## Ampliaciones
 
@@ -45,12 +45,13 @@ La manera en la que vamos a afrontar esta práctica es la siguiente:
 |  | Diseño: Primer borrador | 10/05/2023 |
 | Hecho | Característica A: Nuevo objetivo del juego, ir y volver con el objeto | 14/05/2023 |
 | Hecho | Característica B: Cambiar el camino a seguir del algoritmo A* cuando lleguemos al objeto | 17/05/2023 |
-|  | Característica C: Patrulla del guardia
-|  | Característica D: Decisiones del guardia
-|  | Característica E: Dejar y recoger el objeto
+| Hecho | Característica C: Patrulla del guardia | 21/05/2023 |
+| Hecho | Característica D: Decisiones del guardia | 22/05/2023 |
+| Hecho | Característica E: Dejar y recoger el objeto | 22/05/2023 |
+| Hecho | Característica F: Que el guardia recoja el objeto | 23/05/2023 |
 ||||
 | **-----** | **OPCIONAL** | **-----** |
-|  | Que el guardia recoja el objeto
+
 |  | Varios guardias
 
 ## Referencias

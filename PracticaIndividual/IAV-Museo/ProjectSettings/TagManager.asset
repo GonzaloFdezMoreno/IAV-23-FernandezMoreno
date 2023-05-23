@@ -15,6 +15,7 @@ TagManager:
   - DDLabel
   - MinoLabel
   - GuardiaGraph
+  - Object
   layers:
   - Default
   - TransparentFX

@@ -55,11 +55,17 @@ namespace UCM.IAV.Movimiento
 
         bool picked = false;
         bool dropped = true;
-        float timedropped = 0.0f;
+        bool setInitial = false;
+
+        bool setSeek = false;
+        bool setKeep = false;
+        
         public bool reach0 = true;
         public bool reach1 = false;
         public bool reach2 = false;
         public bool reach3 = false;
+
+        Vector3 initialObjPos;
 
         private void Awake()
         {
@@ -80,6 +86,8 @@ namespace UCM.IAV.Movimiento
             Application.targetFrameRate = frameRate;
 
             FindGO();
+
+            
         }
 
         private void OnLevelWasLoaded(int level)
@@ -93,6 +101,15 @@ namespace UCM.IAV.Movimiento
             if (guardia == null)
             {
                 guardia = GameObject.Find("Guardia");
+            }
+
+            if (!setInitial)
+            {
+               
+                initialObjPos = exitSlab.transform.position;
+                setInitial = true;
+                Debug.Log(initialObjPos);
+                
             }
 
             // Timer para mostrar el frameRate a intervalos
@@ -168,6 +185,11 @@ namespace UCM.IAV.Movimiento
                 reach3 = true;
             }
 
+            if(guardia!=null&&(guardia.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
+            {
+                resetObjPos();
+            }
+
             
 
             //Input
@@ -194,8 +216,8 @@ namespace UCM.IAV.Movimiento
                 exitSlab = GameObject.FindGameObjectWithTag("Exit");
                 startSlab = GameObject.FindGameObjectWithTag("Start");
                 player = GameObject.Find("Avatar");
-                
-                
+
+               
             }
         }
 
@@ -247,6 +269,35 @@ namespace UCM.IAV.Movimiento
             return dropped;
         }
 
+        public void Seek()
+        {
+            setSeek = true;
+        }
+        public void StopSeek()
+        {
+            setSeek = false;
+        }
+        public void Keep()
+        {
+            setKeep = true;
+        }
+        public void StopKeep()
+        {
+            setKeep = false;
+        }
+
+        public bool GetSeek()
+        {
+            return setSeek;
+        }
+        public bool GetKeep()
+        {
+            return setKeep;
+        }
+
+
+
+
         public void SetExit(int i, int j, float size)
         {
             exit = new GameObject(); exit.name = "Exit";
@@ -269,7 +320,6 @@ namespace UCM.IAV.Movimiento
             checkpoints[order].transform.position = new Vector3(i * size, 0, j * size);
 
 
-            
         }
 
         public GameObject GetCheckpointNode(int order)
@@ -302,6 +352,21 @@ namespace UCM.IAV.Movimiento
             return guardia;
         }
 
+        public GameObject GetObj()
+        {
+            return exitSlab;
+        }
+
+        public void resetObjPos()
+        {
+            exit.transform.position = initialObjPos;
+            exitSlab.transform.position = initialObjPos;
+        }
+
+        public bool ObjOnInitialPos()
+        {
+            return exit.transform.position == initialObjPos;
+        }
 
         private void ChangeFrameRate()
         {

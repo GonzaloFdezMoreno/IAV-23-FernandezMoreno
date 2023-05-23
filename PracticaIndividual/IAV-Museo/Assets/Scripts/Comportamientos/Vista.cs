@@ -11,10 +11,14 @@ public class Vista : MonoBehaviour
     private Llegada lleg;
     [SerializeField]
     Transform playerTransform;
+    
     RaycastHit sight = new RaycastHit();
+    
+
     float seetime = 0;
 
-    float angvista; //para ver si te ve el minotauro
+    float angvista; //para ver si te ve el guardia
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -29,45 +33,54 @@ public class Vista : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Physics.Raycast(transform.position, playerTransform.position - transform.position,out sight)) //creamos una linea entre el jugador y el minotauro
+        if (!GameManager.instance.GetKeep())
         {
-
-            angvista = Vector3.Angle(transform.forward, playerTransform.position - transform.position); //calculamos el angulo entre la direccion que lleva el minotauro y el raycast creado
-
-            //Debug.Log("Ray hit: " + sight.collider.gameObject.tag);
-            if (sight.collider.gameObject.tag == "Player"&&angvista>-30&&angvista<30) //comprobamos que no haya nada entre player y el minotauro y ademas que esté en un angulo bajo de forma que pueda ver al jugador
+            if (Physics.Raycast(transform.position, playerTransform.position - transform.position, out sight)) //creamos una linea entre el jugador y el guardia
             {
 
-                if (!lleg.enabled) { 
-                    //si lo ve que lo persiga
-                    reco.enabled = false;
-                   
-                    if (GameManager.instance.GetPicked()||seetime>3) {
-                       
-                        lleg.enabled = true;
-                        lleg.objetivo = sight.collider.gameObject;
-                    }
-                    else
+                angvista = Vector3.Angle(transform.forward, playerTransform.position - transform.position); //calculamos el angulo entre la direccion que lleva el guardia y el raycast creado
+
+
+
+                if (sight.collider.gameObject.tag == "Player" && angvista > -30 && angvista < 30) //comprobamos que no haya nada entre player y el guardia y ademas que esté en un angulo bajo de forma que pueda ver al jugador
+                {
+
+                    if (!lleg.enabled)
                     {
-                        this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
-                        seetime += Time.deltaTime;
+                        //si lo ve que lo persiga
+                        reco.enabled = false;
+
+                        if (GameManager.instance.GetPicked() || seetime > 2)
+                        {
+
+                            lleg.enabled = true;
+                            lleg.objetivo = sight.collider.gameObject;
+                            GameManager.instance.Seek();
+                        }
+                        else
+                        {
+                            this.gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                            seetime += Time.deltaTime;
+                        }
+
+
                     }
-
-
                 }
-            }
-            else
-            {
-                if (!reco.enabled) { //para que solo lo haga 1 vez
-                    //si no lo ve que siga merodeando
-                    reco.enabled = true;
-                    lleg.enabled = false;
-                    seetime = 0;
+
+                else
+                {
+                    if (!reco.enabled)
+                    { //para que solo lo haga 1 vez
+                      //si no lo ve que siga merodeando
+                        reco.enabled = true;
+                        lleg.enabled = false;
+                        seetime = 0;
+                        GameManager.instance.StopSeek();
+                    }
                 }
             }
         }
 
-        //Si ve que el objeto no está en su sitio lo recoge
-
     }
+
 }

@@ -26,7 +26,7 @@ namespace UCM.IAV.Movimiento
         Text heuristicText;
         Text label;
         Text label2;
-        string mazeSize = "10x10";
+        string mazeSize = "20x20";
 
         private int frameRate = 60;
         TheseusGraph theseusGraph;
@@ -48,10 +48,12 @@ namespace UCM.IAV.Movimiento
 
 
         public GameObject[] checkpoints = new GameObject[4];
+        public GameObject[] checkpoints2 = new GameObject[4];
         GameObject guardia;
+        GameObject guardia2;
         
 
-        int numMinos = 1;
+        int numMinos = 2;
 
         bool picked = false;
         bool dropped = true;
@@ -64,6 +66,11 @@ namespace UCM.IAV.Movimiento
         public bool reach1 = false;
         public bool reach2 = false;
         public bool reach3 = false;
+
+        public bool reach02 = true;
+        public bool reach12 = false;
+        public bool reach22 = false;
+        public bool reach32 = false;
 
         Vector3 initialObjPos;
 
@@ -100,7 +107,12 @@ namespace UCM.IAV.Movimiento
         {
             if (guardia == null)
             {
-                guardia = GameObject.Find("Guardia");
+                guardia = GameObject.Find("Guardia0");
+            }
+
+            if (guardia2 == null)
+            {
+                guardia2 = GameObject.Find("Guardia1");
             }
 
             if (!setInitial)
@@ -153,44 +165,45 @@ namespace UCM.IAV.Movimiento
                 goToScene("Menu");
             }
 
-            if (guardia != null && (guardia.transform.position - checkpoints[0].transform.position).magnitude < 0.5f)
-            {
-                reach0 = true;
-                reach1 = false;
-                reach2 = false;
-                reach3 = false;
-            }
+            //if (guardia != null && (guardia.transform.position - checkpoints[0].transform.position).magnitude < 0.5f)
+            //{
+            //    reach0 = true;
+            //    reach1 = false;
+            //    reach2 = false;
+            //    reach3 = false;
+            //}
 
-            if (guardia != null && (guardia.transform.position - checkpoints[1].transform.position).magnitude < 0.5f)
-            {
-                reach0 = false;
-                reach1 = true;
-                reach2 = false;
-                reach3 = false;
-            }
+            //if (guardia != null && (guardia.transform.position - checkpoints[1].transform.position).magnitude < 0.5f)
+            //{
+            //    reach0 = false;
+            //    reach1 = true;
+            //    reach2 = false;
+            //    reach3 = false;
+            //}
 
-            if (guardia != null && (guardia.transform.position - checkpoints[2].transform.position).magnitude < 0.5f)
-            {
-                reach0 = false;
-                reach1 = false;
-                reach2 = true;
-                reach3 = false;
-            }
+            //if (guardia != null && (guardia.transform.position - checkpoints[2].transform.position).magnitude < 0.5f)
+            //{
+            //    reach0 = false;
+            //    reach1 = false;
+            //    reach2 = true;
+            //    reach3 = false;
+            //}
 
-            if (guardia != null && (guardia.transform.position - checkpoints[3].transform.position).magnitude < 0.5f)
-            {
-                reach0 = false;
-                reach1 = false;
-                reach2 = false;
-                reach3 = true;
-            }
+            //if (guardia != null && (guardia.transform.position - checkpoints[3].transform.position).magnitude < 0.5f)
+            //{
+            //    reach0 = false;
+            //    reach1 = false;
+            //    reach2 = false;
+            //    reach3 = true;
+            //}
 
-            if(guardia!=null&&(guardia.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
-            {
-                resetObjPos();
-            }
+            //if(guardia!=null&&(guardia.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
+            //{
+            //    resetObjPos();
+            //}
 
-            
+            Guardia1();
+            Guardia2();
 
             //Input
             if (Input.GetKeyDown(KeyCode.R))
@@ -236,7 +249,7 @@ namespace UCM.IAV.Movimiento
         public void setNumMinos()
         {
             //numMinos = int.Parse(label2.text);
-            numMinos = 1; 
+            numMinos = 2; 
         }
 
         public int getNumMinos()
@@ -322,11 +335,28 @@ namespace UCM.IAV.Movimiento
 
         }
 
+
+        public void SetCheckPoint2(int i, int j, float size, int order)
+        {
+            checkpoints2[order] = new GameObject(); checkpoints2[order].name = "Checkpoint2" + order;
+            checkpoints2[order].transform.position = new Vector3(i * size, 0, j * size);
+
+
+        }
+
+
         public GameObject GetCheckpointNode(int order)
         {
             
             return checkpoints[order];
         }
+
+        public GameObject GetCheckpoint2Node(int order)
+        {
+
+            return checkpoints2[order];
+        }
+
 
         public bool hasReachedfirstCheckpoint()
         {
@@ -347,7 +377,32 @@ namespace UCM.IAV.Movimiento
             return reach3;
         }
 
+
+        public bool hasReachedfirstCheckpoint2()
+        {
+            return reach0;
+        }
+        public bool hasReachedsecondCheckpoint2()
+        {
+            return reach1;
+        }
+
+        public bool hasReachedthirdCheckpoint2()
+        {
+            return reach2;
+        }
+
+        public bool hasReachedforthCheckpoint2()
+        {
+            return reach3;
+        }
+
         public GameObject GetGuardia()
+        {
+            return guardia;
+        }
+
+        public GameObject GetGuardia2()
         {
             return guardia;
         }
@@ -390,5 +445,86 @@ namespace UCM.IAV.Movimiento
         {
             return mazeSize;
         }
+
+        void Guardia1()
+        {
+            if (guardia != null && (guardia.transform.position - checkpoints[0].transform.position).magnitude < 0.5f)
+            {
+                reach0 = true;
+                reach1 = false;
+                reach2 = false;
+                reach3 = false;
+            }
+
+            if (guardia != null && (guardia.transform.position - checkpoints[1].transform.position).magnitude < 0.5f)
+            {
+                reach0 = false;
+                reach1 = true;
+                reach2 = false;
+                reach3 = false;
+            }
+
+            if (guardia != null && (guardia.transform.position - checkpoints[2].transform.position).magnitude < 0.5f)
+            {
+                reach0 = false;
+                reach1 = false;
+                reach2 = true;
+                reach3 = false;
+            }
+
+            if (guardia != null && (guardia.transform.position - checkpoints[3].transform.position).magnitude < 0.5f)
+            {
+                reach0 = false;
+                reach1 = false;
+                reach2 = false;
+                reach3 = true;
+            }
+
+            if (guardia != null && (guardia.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
+            {
+                resetObjPos();
+            }
+        }
+
+        void Guardia2()
+        {
+            if (guardia2 != null && (guardia.transform.position - checkpoints2[0].transform.position).magnitude < 0.5f)
+            {
+                reach02 = true;
+                reach12 = false;
+                reach22 = false;
+                reach32 = false;
+            }
+
+            if (guardia2 != null && (guardia.transform.position - checkpoints2[1].transform.position).magnitude < 0.5f)
+            {
+                reach02 = false;
+                reach12 = true;
+                reach22 = false;
+                reach32 = false;
+            }
+
+            if (guardia2 != null && (guardia.transform.position - checkpoints2[2].transform.position).magnitude < 0.5f)
+            {
+                reach02 = false;
+                reach12 = false;
+                reach22 = true;
+                reach32 = false;
+            }
+
+            if (guardia2 != null && (guardia.transform.position - checkpoints2[3].transform.position).magnitude < 0.5f)
+            {
+                reach02 = false;
+                reach12 = false;
+                reach22 = false;
+                reach32 = true;
+            }
+
+            if (guardia2 != null && (guardia.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
+            {
+                resetObjPos();
+            }
+        }
+
     }
 }

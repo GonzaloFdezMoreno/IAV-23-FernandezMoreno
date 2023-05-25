@@ -32,18 +32,19 @@ namespace UCM.IAV.Navegacion
         {
             GameObject graphGO = GameObject.Find("GraphGrid");
 
+
             if (graphGO != null)
                 graph = graphGO.GetComponent<GraphGrid>();
 
             for (int i = 0; i < numMinos; i++)
-                GenerateMino();
+                GenerateMino(i);
         }
 
-        void GenerateMino()
+        void GenerateMino(int i)
         {
-
+            Debug.Log("CreaGuardia");
             GameObject minoGO = Instantiate(minotaur, graph.GetRandomPos().transform.position + new Vector3(0, 0.3f, 0), Quaternion.identity);
-            minoGO.name = "Guardia";
+            minoGO.name = "Guardia"+i;
         }
     }
 }

@@ -38,7 +38,7 @@ public class VistaObj : MonoBehaviour
 
             
                 angvistaObj = Vector3.Angle(transform.forward, objTransform.position - transform.position);
-                Debug.Log(sightObj.collider.gameObject.name);
+                //Debug.Log(sightObj.collider.gameObject.name);
 
                 if (sightObj.collider.gameObject.name == "ExitSlab"  && angvistaObj > -30 && angvistaObj < 30 && !GameManager.instance.ObjOnInitialPos()) //si ve que el objeto no esta en su sitio irá hacia el
                 {

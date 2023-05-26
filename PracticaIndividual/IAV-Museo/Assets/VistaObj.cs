@@ -32,7 +32,7 @@ public class VistaObj : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.GuardiaHasObj())
+        if (!GameManager.instance.GuardiaHasObj()&&!GameManager.instance.Guardia2HasObj())
         {
             if (!GameManager.instance.GetSeek())
             {

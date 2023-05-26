@@ -55,6 +55,7 @@ namespace UCM.IAV.Movimiento
 
         GameObject og;
         bool guardiaPicked = false;
+        bool guardia2Picked = false;
 
 
         
@@ -211,22 +212,22 @@ namespace UCM.IAV.Movimiento
 
             Guardia1();
             Guardia2();
-            if(guardia!=null&&(guardia.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
-            {
-                //resetObjPos();
-                guardiaPicked = true;
-            }
-            if (guardiaPicked)
-            {
-                exitSlab.transform.position = guardia.transform.position;
-                exit.transform.position = guardia.transform.position;
-            }
+            //if(guardia!=null&&(guardia.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
+            //{
+            //    //resetObjPos();
+            //    guardiaPicked = true;
+            //}
+            //if (guardiaPicked)
+            //{
+            //    exitSlab.transform.position = guardia.transform.position;
+            //    exit.transform.position = guardia.transform.position;
+            //}
 
-            if(og != null && (og.transform.position - exit.transform.position).magnitude < 1f && guardiaPicked)
-            {
-                guardiaPicked = false;
-                resetObjPos();
-            }
+            //if(og != null && (og.transform.position - exit.transform.position).magnitude < 1f && guardiaPicked)
+            //{
+            //    guardiaPicked = false;
+            //    resetObjPos();
+            //}
             
 
             //Input
@@ -335,6 +336,11 @@ namespace UCM.IAV.Movimiento
         public bool GuardiaHasObj()
         {
             return guardiaPicked;
+        }
+
+        public bool Guardia2HasObj()
+        {
+            return guardia2Picked;
         }
 
         public GameObject OgPosObj()
@@ -474,7 +480,9 @@ namespace UCM.IAV.Movimiento
 
         public void ChangeSize()
         {
-            mazeSize = label.text;
+            //mazeSize = label.text;
+            mazeSize = "20x20";
+
         }
         public string getSize()
         {
@@ -517,6 +525,18 @@ namespace UCM.IAV.Movimiento
 
             if (guardia != null && (guardia.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
             {
+                //resetObjPos();
+                guardiaPicked = true;
+            }
+            if (guardiaPicked)
+            {
+                exitSlab.transform.position = guardia.transform.position;
+                exit.transform.position = guardia.transform.position;
+            }
+
+            if (og != null && (og.transform.position - exit.transform.position).magnitude < 1f && guardiaPicked)
+            {
+                guardiaPicked = false;
                 resetObjPos();
             }
         }
@@ -555,8 +575,20 @@ namespace UCM.IAV.Movimiento
                 reach32 = true;
             }
 
-            if (guardia2 != null && (guardia.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
+            if (guardia2 != null && (guardia2.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
             {
+                //resetObjPos();
+                guardia2Picked = true;
+            }
+            if (guardia2Picked)
+            {
+                exitSlab.transform.position = guardia2.transform.position;
+                exit.transform.position = guardia2.transform.position;
+            }
+
+            if (og != null && (og.transform.position - exit.transform.position).magnitude < 1f && guardia2Picked)
+            {
+                guardia2Picked = false;
                 resetObjPos();
             }
         }

@@ -113,23 +113,34 @@ namespace UCM.IAV.Navegacion
 
 
             if (srcObj == null) srcObj = GameManager.instance.GetGuardia2();
-            if (GameManager.instance.hasReachedfirstCheckpoint2())
+
+            if (GameManager.instance.Guardia2HasObj())
             {
-                 
-                 dstObj = GameManager.instance.GetCheckpoint2Node(1);
+                dstObj = GameManager.instance.OgPosObj();
             }
-            else if (GameManager.instance.hasReachedsecondCheckpoint2())
-            {
-                 dstObj = GameManager.instance.GetCheckpoint2Node(2);
+            else {
+
+                if (GameManager.instance.hasReachedfirstCheckpoint2())
+                {
+
+                    dstObj = GameManager.instance.GetCheckpoint2Node(1);
+                }
+                else if (GameManager.instance.hasReachedsecondCheckpoint2())
+                {
+                    dstObj = GameManager.instance.GetCheckpoint2Node(2);
+                }
+                else if (GameManager.instance.hasReachedthirdCheckpoint2())
+                {
+                    dstObj = GameManager.instance.GetCheckpoint2Node(3);
+                }
+                else if (GameManager.instance.hasReachedforthCheckpoint2())
+                {
+                    dstObj = GameManager.instance.GetCheckpoint2Node(0);
+                }
+
             }
-            else if (GameManager.instance.hasReachedthirdCheckpoint2())
-            {
-                dstObj = GameManager.instance.GetCheckpoint2Node(3);
-            }
-            else if (GameManager.instance.hasReachedforthCheckpoint2())
-            {
-                dstObj = GameManager.instance.GetCheckpoint2Node(0);
-            }
+
+           
 
 
             //Source jugador y destino el nodo final

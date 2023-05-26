@@ -75,6 +75,7 @@ public class Vista : MonoBehaviour
                         reco.enabled = true;
                         lleg.enabled = false;
                         seetime = 0;
+                        reco.ResetPath();
                         GameManager.instance.StopSeek();
                     }
                 }

@@ -30,12 +30,60 @@ La manera en la que vamos a afrontar esta práctica es la siguiente:
  
  - Se crearán y/o modificarán varios scripts para el nuevo comportamiento de los guardias.
 
+ - Característica A: El juego ahora consiste en llegar al objeto y traerlo de vuelta a la casilla inicial
+*Hacer que en el Game Manager una vez llegues a la salida,
+puedas llevarte el objeto y debas llegar con ello al lugar donde empezaste para completar el juego*
+
+ - Característica B: Modificar el hilo para que una vez tengas el objeto en tu poder te indique el camino de salida
+ 
+ *If(tienes el objeto)-> lugar de destino: la salida*
+  
+ *else -> lugar de destino: el objeto*
+
+- Característica C: El guardia seguirá un hilo hacia un punto determinado y cuando este lo alcance cambiará al siguiente asignado, estos puntos 
+                    serán creados desde el mapa y se interpretarán en la lectura de este.
+                    
+ *If(casilla[i][j]=="1")->checkpoint1...*
+ 
+ *If(llega al primer Checkpoint)-> lugar de destino: siguiente checkpoint*
+  
+ - Caracteristica D: El guardia dependiendo de lo que vea actuará de forma distinta:
+ 
+                    - Si no ve al jugador, seguirá realizando su patrulla
+                    - Si ve al jugador pero este no lleva el objeto, dudará unos instantes y se quedará parado mirando al jugador antes de ir a por el
+                    - Si ve al jugador y este lleva el objeto irá directamente a por el
+                    
+ *If (no veo)->Patrulla*
+ 
+  *else if(veo sin objeto)->sospecha*
+  
+  *else if (veo sin objeto durante un rato)->perseguir*
+  
+  *else if (veo con objeto)->perseguir*
+- Caracteristica E: El jugador podrá recoger el objeto y dejarlo con la tecla E, llevar el objeto te hace ir mas lento y alerta al guardia ensegida si te ve,
+                   por lo que a lo mejor es mas optimo para tu ruta de escape dejar el objeto en un lugar oculto o dejar el objeto para escapar con facilidad 
+                   
+                   
+- Caracteristica F: El guardia si ve que el objeto se encuentra en un lugar que no le corresponde irá a por el para entregarlo de inmediato a donde debería estar
+
+*if (veo objeto fuera de su sitio)-> Ir a por el objeto*
+
+- Caractrística G: El guardia lleva el objeto al punto donde estaba originalmente y luego vuelve a seguir su patrulla 
+ *if(lleva el ojbeto)-> lugar de destino: zona orginal del objeto*
+ *una vez dejado -> seguir la patruya*
+
+
+
 ## Pruebas y métricas
 
 Se descarga: [Vídeo de prueba](https://github.com/GonzaloFdezMoreno/IAV-23-FernandezMoreno/raw/main/Video%20Muestra.mp4)
 
-## Ampliaciones
+**OPCIONAL** (Se encuentra en una rama llamada 2guardias)
 
+- Tener 2 guardias patrullando; en este caso tenemos 2 guardias haciendo su ronda, el funcionamiento es el mismo pero siguen puntos distintos al patrullar,
+  además, en algunos puntos el guardia 2 espera a que el guardia 1 termine se llegar a cierto punto (ver video)
+
+Se descarga: [Vídeo de prueba de 2 guardias](https://github.com/GonzaloFdezMoreno/IAV-23-FernandezMoreno/raw/main/Video%20Muestra.mp4)
 
 
 ## Producción
@@ -49,10 +97,10 @@ Se descarga: [Vídeo de prueba](https://github.com/GonzaloFdezMoreno/IAV-23-Fern
 | Hecho | Característica D: Decisiones del guardia | 22/05/2023 |
 | Hecho | Característica E: Dejar y recoger el objeto | 22/05/2023 |
 | Hecho | Característica F: Que el guardia recoja el objeto | 23/05/2023 |
+| Hecho | Característica G: Que el guardia lleve el objeto a donde estaba | 26/05/2023 |
 ||||
 | **-----** | **OPCIONAL** | **-----** |
-
-|  | Varios guardias
+| Hecho | 2 guardias|  26/05/2023 |
 
 ## Referencias
 

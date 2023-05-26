@@ -32,40 +32,59 @@ public class VistaObj : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.GetSeek()) { 
-            if (Physics.Raycast(transform.position, objTransform.position - transform.position, out sightObj)) //creamos una linea entre el objeto y el guardia
+        if (!GameManager.instance.GuardiaHasObj())
+        {
+            if (!GameManager.instance.GetSeek())
             {
-
-            
-                angvistaObj = Vector3.Angle(transform.forward, objTransform.position - transform.position);
-                //Debug.Log(sightObj.collider.gameObject.name);
-
-                if (sightObj.collider.gameObject.name == "ExitSlab"  && angvistaObj > -30 && angvistaObj < 30 && !GameManager.instance.ObjOnInitialPos()) //si ve que el objeto no esta en su sitio irá hacia el
+                if (Physics.Raycast(transform.position, objTransform.position - transform.position, out sightObj)) //creamos una linea entre el objeto y el guardia
                 {
-                    
-                    if (!lleg.enabled)
+
+
+                    angvistaObj = Vector3.Angle(transform.forward, objTransform.position - transform.position);
+                    Debug.Log(sightObj.collider.gameObject.name);
+
+                    if (sightObj.collider.gameObject.name == "ExitSlab" && angvistaObj > -30 && angvistaObj < 30 && !GameManager.instance.ObjOnInitialPos()) //si ve que el objeto no esta en su sitio irï¿½ hacia el
                     {
-                        //si lo ve que vaya a por el
-                        reco.enabled = false;
-                        lleg.enabled = true;
-                        lleg.objetivo = sightObj.collider.gameObject;
-                        GameManager.instance.Keep();
 
+                        if (!lleg.enabled)
+                        {
+                            //si lo ve que vaya a por el
+                            reco.enabled = false;
+                            lleg.enabled = true;
+                            lleg.objetivo = sightObj.collider.gameObject;
+                            GameManager.instance.Keep();
+
+                        }
                     }
-                }
-                else
-                {
-                    if (!reco.enabled)
-                    { //para que solo lo haga 1 vez
-                        //si no lo ve que siga merodeando
-                        reco.enabled = true;
-                        lleg.enabled = false;
-                        GameManager.instance.StopKeep();
+                    else
+                    {
+                        if (!reco.enabled)
+                        { //para que solo lo haga 1 vez
+                          //si no lo ve que siga merodeando
+                            reco.enabled = true;
+                            lleg.enabled = false;
+                            reco.ResetPath();
+                            GameManager.instance.StopKeep();
 
+                        }
                     }
                 }
             }
         }
+
+        else
+        {
+            if (!reco.enabled)
+            { //para que solo lo haga 1 vez
+              //si no lo ve que siga merodeando
+                reco.enabled = true;
+                lleg.enabled = false;
+                GameManager.instance.StopKeep();
+
+            }
+        }
+       
+
     }
 
 }

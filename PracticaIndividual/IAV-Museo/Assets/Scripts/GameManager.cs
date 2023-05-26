@@ -2,7 +2,7 @@
    Copyright (C) 2020-2023 Federico Peinado
    http://www.federicopeinado.com
    Este fichero forma parte del material de la asignatura Inteligencia Artificial para Videojuegos.
-   Esta asignatura se imparte en la Facultad de Informática de la Universidad Complutense de Madrid (España).
+   Esta asignatura se imparte en la Facultad de Informï¿½tica de la Universidad Complutense de Madrid (Espaï¿½a).
    Autor: Federico Peinado 
    Contacto: email@federicopeinado.com
 */
@@ -51,6 +51,12 @@ namespace UCM.IAV.Movimiento
         public GameObject[] checkpoints2 = new GameObject[4];
         GameObject guardia;
         GameObject guardia2;
+
+
+        GameObject og;
+        bool guardiaPicked = false;
+
+
         
 
         int numMinos = 2;
@@ -76,7 +82,7 @@ namespace UCM.IAV.Movimiento
 
         private void Awake()
         {
-            // Hacemos que el gestor del juego sea un Ejemplar Único
+            // Hacemos que el gestor del juego sea un Ejemplar ï¿½nico
             if (instance == null)
             {
                 instance = this;
@@ -100,6 +106,7 @@ namespace UCM.IAV.Movimiento
         private void OnLevelWasLoaded(int level)
         {
             FindGO();
+            guardiaPicked = false;
         }
 
         // Update is called once per frame
@@ -141,7 +148,7 @@ namespace UCM.IAV.Movimiento
             if (fRText != null)
                 fRText.text = (((int)(m_lastFramerate * 100 + .5) / 100.0)).ToString();
 
-            if (player != null && (player.transform.position - exit.transform.position).magnitude < 0.5f && dropped && Input.GetKeyDown(KeyCode.E))
+            if (player != null && (player.transform.position - exit.transform.position).magnitude < 0.5f && dropped && Input.GetKeyDown(KeyCode.E)&&!guardiaPicked)
             {
                 picked = true;
                 dropped = false;
@@ -204,6 +211,23 @@ namespace UCM.IAV.Movimiento
 
             Guardia1();
             Guardia2();
+            if(guardia!=null&&(guardia.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
+            {
+                //resetObjPos();
+                guardiaPicked = true;
+            }
+            if (guardiaPicked)
+            {
+                exitSlab.transform.position = guardia.transform.position;
+                exit.transform.position = guardia.transform.position;
+            }
+
+            if(og != null && (og.transform.position - exit.transform.position).magnitude < 1f && guardiaPicked)
+            {
+                guardiaPicked = false;
+                resetObjPos();
+            }
+            
 
             //Input
             if (Input.GetKeyDown(KeyCode.R))
@@ -216,12 +240,12 @@ namespace UCM.IAV.Movimiento
 
         private void FindGO()
         {
-            if (SceneManager.GetActiveScene().name == "Menu") // Nombre de escena que habría que llevar a una constante
+            if (SceneManager.GetActiveScene().name == "Menu") // Nombre de escena que habrï¿½a que llevar a una constante
             {
                 label = GameObject.FindGameObjectWithTag("DDLabel").GetComponent<Text>();
                 label2 = GameObject.FindGameObjectWithTag("MinoLabel").GetComponent<Text>();
             }
-            else if (SceneManager.GetActiveScene().name == "Labyrinth") // Nombre de escena que habría que llevar a una constante
+            else if (SceneManager.GetActiveScene().name == "Labyrinth") // Nombre de escena que habrï¿½a que llevar a una constante
             {
                 fRText = GameObject.FindGameObjectWithTag("Framerate").GetComponent<Text>();
                 heuristicText = GameObject.FindGameObjectWithTag("Heuristic").GetComponent<Text>();
@@ -308,7 +332,15 @@ namespace UCM.IAV.Movimiento
             return setKeep;
         }
 
+        public bool GuardiaHasObj()
+        {
+            return guardiaPicked;
+        }
 
+        public GameObject OgPosObj()
+        {
+            return og;
+        }
 
 
         public void SetExit(int i, int j, float size)
@@ -316,6 +348,9 @@ namespace UCM.IAV.Movimiento
             exit = new GameObject(); exit.name = "Exit";
             exit.transform.position = new Vector3(i * size, 0, j * size);
             exitSlab.transform.position = new Vector3(i * size, 0.3f, j * size);
+
+            og = new GameObject(); og.name = "Exit";
+            og.transform.position = new Vector3(i * size, 0, j * size);
         }
 
         public void SetStart(int i, int j, float size)
@@ -380,21 +415,21 @@ namespace UCM.IAV.Movimiento
 
         public bool hasReachedfirstCheckpoint2()
         {
-            return reach0;
+            return reach02;
         }
         public bool hasReachedsecondCheckpoint2()
         {
-            return reach1;
+            return reach12;
         }
 
         public bool hasReachedthirdCheckpoint2()
         {
-            return reach2;
+            return reach22;
         }
 
         public bool hasReachedforthCheckpoint2()
         {
-            return reach3;
+            return reach32;
         }
 
         public GameObject GetGuardia()
@@ -488,7 +523,7 @@ namespace UCM.IAV.Movimiento
 
         void Guardia2()
         {
-            if (guardia2 != null && (guardia.transform.position - checkpoints2[0].transform.position).magnitude < 0.5f)
+            if (guardia2 != null && (guardia2.transform.position - checkpoints2[0].transform.position).magnitude < 0.5f)
             {
                 reach02 = true;
                 reach12 = false;
@@ -496,7 +531,7 @@ namespace UCM.IAV.Movimiento
                 reach32 = false;
             }
 
-            if (guardia2 != null && (guardia.transform.position - checkpoints2[1].transform.position).magnitude < 0.5f)
+            if (guardia2 != null && (guardia2.transform.position - checkpoints2[1].transform.position).magnitude < 0.5f)
             {
                 reach02 = false;
                 reach12 = true;
@@ -504,7 +539,7 @@ namespace UCM.IAV.Movimiento
                 reach32 = false;
             }
 
-            if (guardia2 != null && (guardia.transform.position - checkpoints2[2].transform.position).magnitude < 0.5f)
+            if (guardia2 != null && (guardia2.transform.position - checkpoints2[2].transform.position).magnitude < 0.5f)
             {
                 reach02 = false;
                 reach12 = false;
@@ -512,7 +547,7 @@ namespace UCM.IAV.Movimiento
                 reach32 = false;
             }
 
-            if (guardia2 != null && (guardia.transform.position - checkpoints2[3].transform.position).magnitude < 0.5f)
+            if (guardia2 != null && (guardia2.transform.position - checkpoints2[3].transform.position).magnitude < 0.5f)
             {
                 reach02 = false;
                 reach12 = false;

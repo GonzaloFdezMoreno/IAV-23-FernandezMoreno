@@ -79,6 +79,7 @@ public class VistaObj : MonoBehaviour
               //si no lo ve que siga merodeando
                 reco.enabled = true;
                 lleg.enabled = false;
+                reco.ResetPath();
                 GameManager.instance.StopKeep();
 
             }

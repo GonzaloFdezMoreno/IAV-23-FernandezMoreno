@@ -2,10 +2,11 @@
 
 ## Autor
 - Gonzalo Fernández Moreno ([GonzaloFdezMoreno](https://github.com/GonzaloFdezMoreno))
+
   *Leer el LeerPrimero.txt para tener algunos puntos en cuenta y saber de antemano posibles errores*
 
 ## Propuesta
-Se pretende crear un juego en el cual el jugador pueda llegar al objeto que debe robar y una vez conseguida encontrar el camno de vuelta (usando la heuristica de la práctica 2); por otro lado habrá unos guardias que rondan el lugar y que dependiendo de si llevamos el objeto o no nos perseguiran o antes dudarán sobre si nos han visto o no.
+Se pretende crear un juego en el cual el jugador pueda llegar al objeto que debe robar y una vez conseguida encontrar el camno de vuelta (usando la práctica 2); por otro lado habrá unos guardias que rondan el lugar y que dependiendo de si llevamos el objeto o no nos perseguiran o antes dudarán sobre si nos han visto o no.
 
 ## Punto de partida
 Se parte de un proyecto base de Unity proporcionado por el profesor aquí:
@@ -71,6 +72,7 @@ puedas llevarte el objeto y debas llegar con ello al lugar donde empezaste para 
 
 - Caractrística G: El guardia lleva el objeto al punto donde estaba originalmente y luego vuelve a seguir su patrulla 
  *if(lleva el ojbeto)-> lugar de destino: zona orginal del objeto*
+ 
  *una vez dejado -> seguir la patruya*
 
 - Característica H: 2 guardias que funcionan de la misma forma con las carácterísticas anteriores pero que realizan un recorrido distinto y

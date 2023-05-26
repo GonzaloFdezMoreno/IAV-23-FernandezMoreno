@@ -112,10 +112,10 @@ namespace UCM.IAV.Navegacion
             }
 
 
-            if (srcObj == null) srcObj = GameManager.instance.GetGuardia();
+            if (srcObj == null) srcObj = GameManager.instance.GetGuardia2();
             if (GameManager.instance.hasReachedfirstCheckpoint2())
             {
-                 Debug.Log("o");
+                 
                  dstObj = GameManager.instance.GetCheckpoint2Node(1);
             }
             else if (GameManager.instance.hasReachedsecondCheckpoint2())
@@ -140,10 +140,14 @@ namespace UCM.IAV.Navegacion
             switch (algorithm)
                 {
                     case TesterGraphAlgorithm.ASTAR:
-                        //Chequeo extra para no recalcular camino cuando no sea necesario
-                        if (path == null || path.Count == 0)
-                            if (firstHeuristic) path = graph.GetPathAstar(srcObj, dstObj, Euclidea); // COMO SEGUNDO ARGUMENTO SE DEBERÍA PASAR LA HEURÍSTICA
-                            else path = graph.GetPathAstar(srcObj, dstObj, Manhattan); // COMO SEGUNDO ARGUMENTO SE DEBERÍA PASAR LA HEURÍSTICA
+                    //Chequeo extra para no recalcular camino cuando no sea necesario
+                    if (path == null || path.Count == 0) {
+                        Debug.Log(srcObj);
+                        if (firstHeuristic) path = graph.GetPathAstar(srcObj, dstObj, Euclidea); // COMO SEGUNDO ARGUMENTO SE DEBERÍA PASAR LA HEURÍSTICA
+                        else path = graph.GetPathAstar(srcObj, dstObj, Manhattan); // COMO SEGUNDO ARGUMENTO SE DEBERÍA PASAR LA HEURÍSTICA
+                    }
+                        
+                            
                         break;
                     default:
                     case TesterGraphAlgorithm.BFS:

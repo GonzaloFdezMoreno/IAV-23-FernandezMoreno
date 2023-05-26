@@ -18,19 +18,50 @@ namespace UCM.IAV.Movimiento
         Transform sigNodo;
 
         public GuardiaGraph graph;
+        public GuardiaGraph2 graph2;
+
+
 
         override public void Update()
         {
-            graph = GameObject.FindGameObjectWithTag("GuardiaGraph").GetComponent<GuardiaGraph>();
+            if (graph == null && graph2==null)
+            {
+                if (this.gameObject.name == "Guardia0")
+                {
+                    Debug.Log("tengo0");
+                    graph = GameObject.FindGameObjectWithTag("GuardiaGraph").GetComponent<GuardiaGraph>();
+                }
 
-            if (graph != null) { 
+
+                else if (this.gameObject.name == "Guardia1")
+                {
+                    Debug.Log("tengo1");
+                    graph2 = GameObject.FindGameObjectWithTag("GuardiaGraph2").GetComponent<GuardiaGraph2>();
+                }
+            }
+           
+            if (graph != null||graph2!=null) { 
             //Si esta lo suficientemente cerca del nodo destino, lo elimina del camino en graph
                 if (sigNodo != null && Vector3.Distance(transform.position, sigNodo.position) < 0.5f)
                 {
+                    if(graph!=null)
                     graph.PopLastNode();
+                    else if(graph2!=null)
+                    graph2.PopLastNode();
                 }
-                sigNodo = graph.GetNextNode();
+                if (graph != null)
+                {
+                    sigNodo = graph.GetNextNode();
+                }
+                
+                else if (graph2 != null)
+                {
+                    sigNodo = graph2.GetNextNode();
+                }
+                //Debug.Log(sigNodo);
             }
+
+           
             base.Update();
         }
 
@@ -59,8 +90,15 @@ namespace UCM.IAV.Movimiento
 
         public void ResetPath()
         {
-            if(graph!=null)
-            graph.ResetPath();
+            if (graph != null)
+            {
+                graph.ResetPath();
+            }
+            else if (graph2 != null)
+            {
+                graph2.ResetPath();
+            }
+           
         }
     }
 }

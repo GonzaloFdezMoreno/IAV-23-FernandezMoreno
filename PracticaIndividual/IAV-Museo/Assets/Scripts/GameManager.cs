@@ -404,7 +404,7 @@ namespace UCM.IAV.Movimiento
 
         public GameObject GetGuardia2()
         {
-            return guardia;
+            return guardia2;
         }
 
         public GameObject GetObj()

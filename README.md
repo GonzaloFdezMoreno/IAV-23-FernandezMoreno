@@ -68,19 +68,22 @@ puedas llevarte el objeto y debas llegar con ello al lugar donde empezaste para 
 
 *if (veo objeto fuera de su sitio)-> Ir a por el objeto*
 
-
+- Caractrística G: El guardia lleva el objeto al punto donde estaba originalmente y luego vuelve a seguir su patrulla 
+ *if(lleva el ojbeto)-> lugar de destino: zona orginal del objeto*
+ *una vez dejado -> seguir la patruya*
 
 
 
 ## Pruebas y métricas
 
--Prueba de varios guardias en una rama; no funciona por lo visto que intentes hacer que funcionen 2 hilos de forma simultánea, en la escena que se muestra hay
- 2 guardias cada 1 que sigue una serie de puntos, sin embargo, estos no se mueven, posiblemente debido a la estructura del código.
-
 Se descarga: [Vídeo de prueba](https://github.com/GonzaloFdezMoreno/IAV-23-FernandezMoreno/raw/main/Video%20Muestra.mp4)
 
-## Ampliaciones
+**OPCIONAL** (Se encuentra en una rama llamada 2guardias)
 
+- Tener 2 guardias patrullando; en este caso tenemos 2 guardias haciendo su ronda, el funcionamiento es el mismo pero siguen puntos distintos al patrullar,
+  además, en algunos puntos el guardia 2 espera a que el guardia 1 termine se llegar a cierto punto (ver video)
+
+Se descarga: [Vídeo de prueba de 2 guardias](https://github.com/GonzaloFdezMoreno/IAV-23-FernandezMoreno/raw/main/Video%20Muestra.mp4)
 
 
 ## Producción
@@ -94,9 +97,10 @@ Se descarga: [Vídeo de prueba](https://github.com/GonzaloFdezMoreno/IAV-23-Fern
 | Hecho | Característica D: Decisiones del guardia | 22/05/2023 |
 | Hecho | Característica E: Dejar y recoger el objeto | 22/05/2023 |
 | Hecho | Característica F: Que el guardia recoja el objeto | 23/05/2023 |
+| Hecho | Característica G: Que el guardia lleve el objeto a donde estaba | 26/05/2023 |
 ||||
 | **-----** | **OPCIONAL** | **-----** |
-| No funciona | Varios guardias|  25/05/2023 |
+| Hecho | 2 guardias|  26/05/2023 |
 
 ## Referencias
 

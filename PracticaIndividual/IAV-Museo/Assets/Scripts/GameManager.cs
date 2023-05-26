@@ -49,6 +49,12 @@ namespace UCM.IAV.Movimiento
 
         public GameObject[] checkpoints = new GameObject[4];
         GameObject guardia;
+
+
+        GameObject og;
+        bool guardiaPicked = false;
+
+
         
 
         int numMinos = 1;
@@ -93,6 +99,7 @@ namespace UCM.IAV.Movimiento
         private void OnLevelWasLoaded(int level)
         {
             FindGO();
+            guardiaPicked = false;
         }
 
         // Update is called once per frame
@@ -129,7 +136,7 @@ namespace UCM.IAV.Movimiento
             if (fRText != null)
                 fRText.text = (((int)(m_lastFramerate * 100 + .5) / 100.0)).ToString();
 
-            if (player != null && (player.transform.position - exit.transform.position).magnitude < 0.5f && dropped && Input.GetKeyDown(KeyCode.E))
+            if (player != null && (player.transform.position - exit.transform.position).magnitude < 0.5f && dropped && Input.GetKeyDown(KeyCode.E)&&!guardiaPicked)
             {
                 picked = true;
                 dropped = false;
@@ -187,9 +194,20 @@ namespace UCM.IAV.Movimiento
 
             if(guardia!=null&&(guardia.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
             {
-                resetObjPos();
+                //resetObjPos();
+                guardiaPicked = true;
+            }
+            if (guardiaPicked)
+            {
+                exitSlab.transform.position = guardia.transform.position;
+                exit.transform.position = guardia.transform.position;
             }
 
+            if(og != null && (og.transform.position - exit.transform.position).magnitude < 1f && guardiaPicked)
+            {
+                guardiaPicked = false;
+                resetObjPos();
+            }
             
 
             //Input
@@ -295,7 +313,15 @@ namespace UCM.IAV.Movimiento
             return setKeep;
         }
 
+        public bool GuardiaHasObj()
+        {
+            return guardiaPicked;
+        }
 
+        public GameObject OgPosObj()
+        {
+            return og;
+        }
 
 
         public void SetExit(int i, int j, float size)
@@ -303,6 +329,9 @@ namespace UCM.IAV.Movimiento
             exit = new GameObject(); exit.name = "Exit";
             exit.transform.position = new Vector3(i * size, 0, j * size);
             exitSlab.transform.position = new Vector3(i * size, 0.3f, j * size);
+
+            og = new GameObject(); og.name = "Exit";
+            og.transform.position = new Vector3(i * size, 0, j * size);
         }
 
         public void SetStart(int i, int j, float size)

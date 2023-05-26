@@ -2,6 +2,7 @@
 
 ## Autor
 - Gonzalo Fernández Moreno ([GonzaloFdezMoreno](https://github.com/GonzaloFdezMoreno))
+  *Leer el LeerPrimero.txt para tener algunos puntos en cuenta y saber de antemano posibles errores*
 
 ## Propuesta
 Se pretende crear un juego en el cual el jugador pueda llegar al objeto que debe robar y una vez conseguida encontrar el camno de vuelta (usando la heuristica de la práctica 2); por otro lado habrá unos guardias que rondan el lugar y que dependiendo de si llevamos el objeto o no nos perseguiran o antes dudarán sobre si nos han visto o no.
@@ -72,19 +73,20 @@ puedas llevarte el objeto y debas llegar con ello al lugar donde empezaste para 
  *if(lleva el ojbeto)-> lugar de destino: zona orginal del objeto*
  *una vez dejado -> seguir la patruya*
 
-
+- Característica H: 2 guardias que funcionan de la misma forma con las carácterísticas anteriores pero que realizan un recorrido distinto y
+                    funcionan de manera independiente
 
 ## Pruebas y métricas
 
 Se descarga: [Vídeo de prueba](https://github.com/GonzaloFdezMoreno/IAV-23-FernandezMoreno/raw/main/Video%20Muestra.mp4)
 
-**OPCIONAL** (Se encuentra en una rama llamada 2guardias)
+Version final del juego:
 
-- Tener 2 guardias patrullando; en este caso tenemos 2 guardias haciendo su ronda, el funcionamiento es el mismo pero siguen puntos distintos al patrullar,
-  además, en algunos puntos el guardia 2 espera a que el guardia 1 termine se llegar a cierto punto (ver video)
+Se descarga: [Vídeo final](https://github.com/GonzaloFdezMoreno/IAV-23-FernandezMoreno/raw/main/Video%20Final.mp4)
 
-Se descarga: [Vídeo de prueba de 2 guardias](https://github.com/GonzaloFdezMoreno/IAV-23-FernandezMoreno/raw/main/Video%20Muestra.mp4)
+*Los videos realizan las pruebas mencionadas; sin embargo puede haber alguna característica que se muestra en el primer video y no en el segundo*
 
+*Ejemplo: La Característica B se muestra cuando recoges el objeto y te indica la casilla de salida en el primer video, pero en el segundo no se muestra*
 
 ## Producción
 
@@ -98,9 +100,7 @@ Se descarga: [Vídeo de prueba de 2 guardias](https://github.com/GonzaloFdezMore
 | Hecho | Característica E: Dejar y recoger el objeto | 22/05/2023 |
 | Hecho | Característica F: Que el guardia recoja el objeto | 23/05/2023 |
 | Hecho | Característica G: Que el guardia lleve el objeto a donde estaba | 26/05/2023 |
-||||
-| **-----** | **OPCIONAL** | **-----** |
-| Hecho | 2 guardias|  26/05/2023 |
+| Hecho | Característica H: 2 guardias|  26/05/2023 |
 
 ## Referencias
 

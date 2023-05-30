@@ -75,7 +75,7 @@ namespace UCM.IAV.Movimiento
             direccion.lineal.Normalize();
             direccion.lineal *= agente.aceleracionMax;
 
-           s
+           
 
             return direccion;
         }

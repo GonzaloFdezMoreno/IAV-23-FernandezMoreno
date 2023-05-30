@@ -116,7 +116,7 @@ namespace UCM.IAV.Movimiento
                 guardia2 = GameObject.Find("Guardia1");
             }
 
-            if (!setInitial)
+            if (!setInitial&& SceneManager.GetActiveScene().name != "Menu")
             {
                
                 initialObjPos = exitSlab.transform.position;

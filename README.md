@@ -24,13 +24,26 @@ Algunos de estos recursos se modificarán para hacer los nuevos comportamientos,
 
 ## Diseño de la solución
 
-La manera en la que vamos a afrontar esta práctica es la siguiente:
+La manera en la que se afrontará esta práctica es la siguiente:
 
- - Se utilizará **el script de Graph** para que sea capaz de ir y volver por camino utilizando el algoritmo de A*.
+ - Se utilizará **el script de Graph** usado en la practica 2 para que sea capaz de ir y volver por camino utilizando el algoritmo de A*.
 
- - Además de ello, se modificará **el script de persecucuión** para el guardia, para que sea capaz de perseguir al jugador si se cumplen ciertas condiciones.
+ - Se crearán y/o modificarán varios scripts para el nuevo comportamiento de los guardias, de forma que queden tal que así:
  
- - Se crearán y/o modificarán varios scripts para el nuevo comportamiento de los guardias.
+ ```mermaid
+stateDiagram
+    
+   
+    Patrullar --> Sospechar : Ve al jugador sin objeto 
+    Sospechar --> Perseguir : Mas de x tiempo viendole
+    Perseguir --> Patrullar : Pierde de vista al jugador
+    Patrullar --> Perseguir : Ve al jugador con objeto
+    Patrullar --> Recoger : Ve el objeto fuera de su sitio
+    Recoger --> Devolver : Tiene el objeto
+    Devolver --> Patrullar : Deja el objeto en su sitio
+   
+```
+ 
 
  - Característica A: El juego ahora consiste en llegar al objeto y traerlo de vuelta a la casilla inicial
 *Hacer que en el Game Manager una vez llegues a la salida,

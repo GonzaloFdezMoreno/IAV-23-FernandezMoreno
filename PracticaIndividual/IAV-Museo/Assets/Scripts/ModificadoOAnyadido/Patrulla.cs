@@ -1,11 +1,3 @@
-/*    
-   Copyright (C) 2020-2023 Federico Peinado
-   http://www.federicopeinado.com
-   Este fichero forma parte del material de la asignatura Inteligencia Artificial para Videojuegos.
-   Esta asignatura se imparte en la Facultad de Informática de la Universidad Complutense de Madrid (España).
-   Autor: Federico Peinado 
-   Contacto: email@federicopeinado.com
-*/
 
 namespace UCM.IAV.Movimiento
 {
@@ -20,7 +12,7 @@ namespace UCM.IAV.Movimiento
         public GuardiaGraph graph;
         public GuardiaGraph2 graph2;
 
-
+        //funciona igual que el seguir camino pero solo usa el graph correspondiente para cada guardia
 
         override public void Update()
         {
@@ -83,7 +75,7 @@ namespace UCM.IAV.Movimiento
             direccion.lineal.Normalize();
             direccion.lineal *= agente.aceleracionMax;
 
-            // Podríamos meter una rotación automática en la dirección del movimiento, si quisiéramos
+           s
 
             return direccion;
         }

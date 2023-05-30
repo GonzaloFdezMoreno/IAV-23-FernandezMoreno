@@ -20,7 +20,7 @@ public class Vista : MonoBehaviour
     float angvista; //para ver si te ve el guardia
     
 
-    // Start is called before the first frame update
+    
     void Awake()
     {
         //mero = GetComponent<Merodear>();
@@ -30,9 +30,10 @@ public class Vista : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        //dependiendo de si lo que vé primero es al jugador o al objeto elegirá a por cual ir
         if (!GameManager.instance.GetKeep())
         {
             if (Physics.Raycast(transform.position, playerTransform.position - transform.position, out sight)) //creamos una linea entre el jugador y el guardia

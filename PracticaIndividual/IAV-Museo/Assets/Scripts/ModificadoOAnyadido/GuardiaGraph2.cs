@@ -1,11 +1,4 @@
-﻿/*    
-   Copyright (C) 2020-2023 Federico Peinado
-   http://www.federicopeinado.com
-   Este fichero forma parte del material de la asignatura Inteligencia Artificial para Videojuegos.
-   Esta asignatura se imparte en la Facultad de Informática de la Universidad Complutense de Madrid (España).
-   Autor: Federico Peinado 
-   Contacto: email@federicopeinado.com
-*/
+﻿
 using UCM.IAV.Movimiento;
 using UnityEngine;
 using System.Collections.Generic;
@@ -118,7 +111,10 @@ namespace UCM.IAV.Navegacion
             {
                 dstObj = GameManager.instance.OgPosObj();
             }
-            else {
+
+            //comprueba el estado de los checkpoints y situacion del guardia para saber a que lugar tiene que llegar
+            else
+            {
 
                 if (GameManager.instance.hasReachedfirstCheckpoint2())
                 {

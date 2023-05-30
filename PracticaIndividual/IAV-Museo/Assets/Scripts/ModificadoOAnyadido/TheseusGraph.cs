@@ -111,6 +111,8 @@ namespace UCM.IAV.Navegacion
             {
                 //Source jugador y destino el nodo final
                 if (srcObj == null) srcObj = GameManager.instance.GetPlayer();
+
+                //comprueba si se tiene el objeto para saber a que lugar debe ir
                 if (!GameManager.instance.GetPicked())
                 {
                     if (dstObj == null) dstObj = GameManager.instance.GetExitNode();

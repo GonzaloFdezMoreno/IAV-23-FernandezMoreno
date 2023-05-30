@@ -14,4 +14,11 @@ Otros:
  implementadas en  el GameManager podrían haberse hecho creando componentes y dejando asi el código mas limpio.
 
 
+CAMBIOS RESPECTO A DOCUMENTACION E IMPLEMENTACION
+
+-Se ha hecho un diagrama de estados en la documentacion para explicar las acciones del guardia
+-Se ha creado una carpeta con los scripts modificados y/o añadidos y hecho algunos comentarios sobre estos
+-Algunos de los archivos modificados unicamente lo estan en el update (Ej: TheseusGraph), mientras que otros se les han añadido funciones (Ej: GameManager)
+
+
 Alumno: Gonzalo Fdez Moreno

@@ -1,11 +1,4 @@
-/*    
-   Copyright (C) 2020-2023 Federico Peinado
-   http://www.federicopeinado.com
-   Este fichero forma parte del material de la asignatura Inteligencia Artificial para Videojuegos.
-   Esta asignatura se imparte en la Facultad de Inform�tica de la Universidad Complutense de Madrid (Espa�a).
-   Autor: Federico Peinado 
-   Contacto: email@federicopeinado.com
-*/
+
 
 using System;
 using System.Collections;
@@ -149,6 +142,7 @@ namespace UCM.IAV.Movimiento
             if (fRText != null)
                 fRText.text = (((int)(m_lastFramerate * 100 + .5) / 100.0)).ToString();
 
+            //si esta cerca del objeto puede pillarlo
             if (player != null && (player.transform.position - exit.transform.position).magnitude < 0.5f && dropped && Input.GetKeyDown(KeyCode.E)&&!guardiaPicked)
             {
                 picked = true;
@@ -161,73 +155,26 @@ namespace UCM.IAV.Movimiento
                 dropped = true;
             }
 
-
+            //si ha recogido el objeto 
             if (picked)
             {
                 exitSlab.transform.position = player.transform.position;
                 exit.transform.position = player.transform.position;
             }
 
+            //si llega a la salida con elobjeto gana
             if (player != null && (player.transform.position - startp.transform.position).magnitude < 0.5f && picked) { 
                 picked = false;
                 goToScene("Menu");
             }
 
-            //if (guardia != null && (guardia.transform.position - checkpoints[0].transform.position).magnitude < 0.5f)
-            //{
-            //    reach0 = true;
-            //    reach1 = false;
-            //    reach2 = false;
-            //    reach3 = false;
-            //}
+           
 
-            //if (guardia != null && (guardia.transform.position - checkpoints[1].transform.position).magnitude < 0.5f)
-            //{
-            //    reach0 = false;
-            //    reach1 = true;
-            //    reach2 = false;
-            //    reach3 = false;
-            //}
-
-            //if (guardia != null && (guardia.transform.position - checkpoints[2].transform.position).magnitude < 0.5f)
-            //{
-            //    reach0 = false;
-            //    reach1 = false;
-            //    reach2 = true;
-            //    reach3 = false;
-            //}
-
-            //if (guardia != null && (guardia.transform.position - checkpoints[3].transform.position).magnitude < 0.5f)
-            //{
-            //    reach0 = false;
-            //    reach1 = false;
-            //    reach2 = false;
-            //    reach3 = true;
-            //}
-
-            //if(guardia!=null&&(guardia.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
-            //{
-            //    resetObjPos();
-            //}
+            //comprobamos el estado de los checkpoints de los guardias y si tienen el objeto o no
 
             Guardia1();
             Guardia2();
-            //if(guardia!=null&&(guardia.transform.position - exit.transform.position).magnitude < 0.5f && dropped)
-            //{
-            //    //resetObjPos();
-            //    guardiaPicked = true;
-            //}
-            //if (guardiaPicked)
-            //{
-            //    exitSlab.transform.position = guardia.transform.position;
-            //    exit.transform.position = guardia.transform.position;
-            //}
-
-            //if(og != null && (og.transform.position - exit.transform.position).magnitude < 1f && guardiaPicked)
-            //{
-            //    guardiaPicked = false;
-            //    resetObjPos();
-            //}
+          
             
 
             //Input
@@ -287,6 +234,7 @@ namespace UCM.IAV.Movimiento
             SceneManager.LoadScene(scene);
         }
 
+        //Gatters y controladores para poder asignar los objetos en otras clases
         public GameObject GetExitNode()
         {
             return exit;
@@ -385,7 +333,7 @@ namespace UCM.IAV.Movimiento
 
         }
 
-
+        //mas getters y controladores
         public GameObject GetCheckpointNode(int order)
         {
             
@@ -489,6 +437,8 @@ namespace UCM.IAV.Movimiento
             return mazeSize;
         }
 
+
+        //controladores del estado de los guardias
         void Guardia1()
         {
             if (guardia != null && (guardia.transform.position - checkpoints[0].transform.position).magnitude < 0.5f)

@@ -18,7 +18,7 @@ public class VistaObj : MonoBehaviour
    
     float angvistaObj; //para ver si el guardia ve el objeto
 
-    // Start is called before the first frame update
+    
     void Awake()
     {
         //mero = GetComponent<Merodear>();
@@ -29,9 +29,10 @@ public class VistaObj : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        //dependiendo de si lo que vé primero es al jugador o al objeto elegirá a por cual ir
         if (!GameManager.instance.GuardiaHasObj()&&!GameManager.instance.Guardia2HasObj())
         {
             if (!GameManager.instance.GetSeek())
